@@ -43,7 +43,7 @@ const imageData = [
 const App = () => {
 	return (
 		<Flex margin="0 10%" direction="column" align="center">
-			<Heading as="h1" fontSize="50px" m="10px -10% 20px -10%">
+			<Heading as="h1" fontSize="50px" mt="20px">
 				Ainoastaan faneille
 			</Heading>
 			<Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>
