@@ -5,4 +5,12 @@ export const theme = extendTheme({
 		heading: `'Comic Neue', sans-serif`,
 		body: `'Comic Neue', sans-serif`,
 	},
+	styles: {
+		global: {
+			body: {
+				bg: '#367C2B',
+				color: 'white',
+			},
+		},
+	},
 })

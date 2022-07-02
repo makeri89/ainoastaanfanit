@@ -4,30 +4,40 @@ import {
 	ModalOverlay,
 	ModalContent,
 	ModalHeader,
-	ModalFooter,
 	ModalBody,
 	ModalCloseButton,
 	useDisclosure,
 	Image,
+	Heading,
 } from '@chakra-ui/react'
 
 interface Props {
-	src: string
+	image: { src: string; name: string }
 }
 
-const ImageModal = ({ src }: Props) => {
+const ImageModal = ({ image }: Props) => {
 	const { isOpen, onOpen, onClose } = useDisclosure()
 
 	return (
 		<>
-			<Image src={src} alt="tractor" onClick={onOpen} h="200px" />
+			<Image
+				src={image.src}
+				alt="tractor"
+				onClick={onOpen}
+				h="200px"
+				w="200px"
+				objectFit="cover"
+			/>
 			<Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick size="xl">
 				<ModalOverlay />
 				<ModalContent>
-					<ModalCloseButton />
+					<ModalHeader>
+						<Heading color="black">{image.name}</Heading>
+						<ModalCloseButton color="black" />
+					</ModalHeader>
 					<ModalBody>
 						<Box margin="10px">
-							<Image src={src} alt="Tractor" />
+							<Image src={image.src} alt="Tractor" />
 						</Box>
 					</ModalBody>
 				</ModalContent>
