@@ -1,7 +1,5 @@
-import Typography from '@mui/material/Typography'
-import Box from '@mui/material/Box'
-import ImageList from '@mui/material/ImageList'
-import ImageListItem from '@mui/material/ImageListItem'
+import { Box, Grid, Heading } from '@chakra-ui/react'
+import ImageModal from './ImageModal'
 
 const images = [
 	'julia-koblitz-SPzzE4TYxZ0-unsplash.jpg',
@@ -25,19 +23,12 @@ const App = () => {
 				margin: '0 10%',
 			}}
 		>
-			<Typography
-				variant="h1"
-				sx={{ fontFamily: 'Comic Neue', fontSize: '2rem' }}
-			>
-				Ainoastaan faneille
-			</Typography>
-			<ImageList cols={3}>
+			<Heading as="h1">Ainoastaan faneille</Heading>
+			<Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>
 				{images.map((image) => (
-					<ImageListItem key={image}>
-						<img src={image} alt="tractor" />
-					</ImageListItem>
+					<ImageModal src={image} />
 				))}
-			</ImageList>
+			</Grid>
 		</Box>
 	)
 }
