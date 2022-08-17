@@ -38,6 +38,10 @@ const imageData = [
 		src: 'chris-ensminger-yJDZTDeHeG8-unsplash.jpg',
 		name: 'Claas äestämässä',
 	},
+	{
+		src: 'IMG_1606.png',
+		name: 'Traktori Mijas golf clubilla Espanjassa',
+	},
 ]
 
 const App = () => {
