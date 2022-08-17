@@ -40,7 +40,7 @@ const imageData = [
 	},
 	{
 		src: 'IMG_1606.png',
-		name: 'Traktori Mijas golf clubilla Espanjassa',
+		name: 'Juan Deere @ Mijas golf club',
 	},
 ]
 
