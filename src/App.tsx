@@ -42,6 +42,10 @@ const imageData = [
 		src: 'IMG_1606.png',
 		name: 'Juan Deere @ Mijas golf club',
 	},
+	{
+		src: 'claasbroken.jpeg',
+		name: 'Rikkinäinen Claasin puimuri',
+	},
 ]
 
 const App = () => {
