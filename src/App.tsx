@@ -46,6 +46,10 @@ const imageData = [
 		src: 'claasbroken.jpeg',
 		name: 'Rikkinäinen Claasin puimuri',
 	},
+	{
+		src: 'agbot-1920w.webp',
+		name: 'Case IH autonominen traktori',
+	},
 ]
 
 const App = () => {
