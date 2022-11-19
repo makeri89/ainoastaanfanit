@@ -4,9 +4,9 @@ import { unstable_getServerSession } from 'next-auth'
 import { authOptions } from './auth/[...nextauth]'
 
 const s3 = new S3({
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.AWS_ACCESS_KEY,
-  region: process.env.AWS_REGION,
+  accessKeyId: process.env.AWS_PERSONAL_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_PERSONAL_ACCESS_KEY,
+  region: process.env.AWS_PERSONAL_REGION,
   signatureVersion: 'v4',
 })
 
