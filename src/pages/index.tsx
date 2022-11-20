@@ -1,4 +1,5 @@
 import { Button, Flex, Grid, Heading } from '@chakra-ui/react'
+import EmailSubscribe from '../components/EmailSubscribe'
 import FileInput from '../components/FileInput'
 import ImageModal from '../components/ImageModal'
 import { useSession } from 'next-auth/react'
@@ -24,13 +25,16 @@ const App = ({ images }: Props) => {
       <Heading as="h1" fontSize="50px" mt="20px">
         Ainoastaan faneille
       </Heading>
-      {status === 'authenticated' ? (
-        <FileInput />
-      ) : (
-        <Button variant="outline" onClick={handleLogin}>
-          Kirjaudu sisään
-        </Button>
-      )}
+      <Flex gap="10px">
+        {status === 'authenticated' ? (
+          <FileInput />
+        ) : (
+          <Button variant="outline" onClick={handleLogin}>
+            Kirjaudu sisään
+          </Button>
+        )}
+        <EmailSubscribe />
+      </Flex>
       <Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>
         {images.map((image: any) => (
           <ImageModal key={image.name} image={image} />
