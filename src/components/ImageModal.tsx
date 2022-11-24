@@ -6,43 +6,32 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  useDisclosure,
   Image,
   Heading,
 } from '@chakra-ui/react'
 
 interface Props {
-  image: { src: string; name: string }
+  image?: { src: string; name: string }
+  isOpen: boolean
+  onClose: () => void
 }
 
-const ImageModal = ({ image }: Props) => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
+const ImageModal = ({ image, isOpen, onClose }: Props) => {
   return (
-    <>
-      <Image
-        src={image.src}
-        alt="tractor"
-        onClick={onOpen}
-        h="200px"
-        w="200px"
-        objectFit="cover"
-      />
-      <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick size="xl">
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>
-            <Heading color="black">{image.name}</Heading>
-            <ModalCloseButton color="black" />
-          </ModalHeader>
-          <ModalBody>
-            <Box margin="10px">
-              <Image src={image.src} alt="Tractor" />
-            </Box>
-          </ModalBody>
-        </ModalContent>
-      </Modal>
-    </>
+    <Modal isOpen={isOpen} onClose={onClose} closeOnOverlayClick size="xl">
+      <ModalOverlay />
+      <ModalContent>
+        <ModalHeader>
+          <Heading color="black">{image?.name}</Heading>
+          <ModalCloseButton color="black" />
+        </ModalHeader>
+        <ModalBody>
+          <Box margin="10px">
+            <Image src={image?.src} alt="Tractor" />
+          </Box>
+        </ModalBody>
+      </ModalContent>
+    </Modal>
   )
 }
 
