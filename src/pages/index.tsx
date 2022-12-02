@@ -1,4 +1,4 @@
-import { Flex, Grid, useDisclosure } from '@chakra-ui/react'
+import { Button, Flex, Grid, useDisclosure } from '@chakra-ui/react'
 import EmailSubscribe from '../components/EmailSubscribe'
 import FileInput from '../components/FileInput'
 import Image from '../components/Image'
@@ -40,6 +40,11 @@ const App = ({ images }: Props) => {
     <>
       <Flex gap="10px">
         {status === 'authenticated' ? <FileInput /> : <LoginButton />}
+        {status === 'authenticated' && (
+          <Button variant="outline" onClick={() => router.push('/profile')}>
+            Profiili
+          </Button>
+        )}
         <EmailSubscribe />
       </Flex>
       <Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>

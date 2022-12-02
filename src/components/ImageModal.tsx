@@ -31,7 +31,7 @@ const ImageModal = ({ image, isOpen, onClose }: Props) => {
           <Box margin="10px">
             <Image src={image?.src} alt="Tractor" />
           </Box>
-          <Text color="black">Lisääjä: {image?.user}</Text>
+          {/* <Text color="black">Lisääjä: {image?.user}</Text> */}
         </ModalBody>
       </ModalContent>
     </Modal>
