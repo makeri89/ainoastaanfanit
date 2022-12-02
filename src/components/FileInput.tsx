@@ -18,6 +18,7 @@ import { useSession } from 'next-auth/react'
 const FileInput = () => {
   const [desc, setDesc] = useState('')
   const [file, setFile] = useState<File | null>(null)
+  const [showNotification, setShowNotification] = useState(false)
 
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -54,6 +55,12 @@ const FileInput = () => {
     })
     setDesc('')
     setFile(null)
+    setShowNotification(true)
+  }
+
+  const handleClose = () => {
+    setShowNotification(false)
+    onClose()
   }
 
   return (
@@ -64,30 +71,41 @@ const FileInput = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="primary">
-          <Flex direction="column" gap="6px">
-            <ModalHeader>Lisää kuva</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <label htmlFor="description">Kuvaus</label>
-              <Input
-                type="text"
-                id="description"
-                value={desc}
-                onChange={handleDescChange}
-              />
-              <label htmlFor="image">Valitse kuva</label>
-              <input id="image" type="file" onChange={handleFileChange} />
-            </ModalBody>
-            <ModalFooter>
-              <Button
-                variant="outline"
-                _hover={{ color: 'black' }}
-                onClick={handleSubmit}
-              >
-                Lähetä
-              </Button>
-            </ModalFooter>
-          </Flex>
+          {showNotification ? (
+            <div>
+              <ModalHeader color="white">Kuva lisätty!</ModalHeader>
+              <ModalFooter>
+                <Button variant="outline" onClick={handleClose}>
+                  Sulje
+                </Button>
+              </ModalFooter>
+            </div>
+          ) : (
+            <Flex direction="column" gap="6px">
+              <ModalHeader>Lisää kuva</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <label htmlFor="description">Kuvaus</label>
+                <Input
+                  type="text"
+                  id="description"
+                  value={desc}
+                  onChange={handleDescChange}
+                />
+                <label htmlFor="image">Valitse kuva</label>
+                <input id="image" type="file" onChange={handleFileChange} />
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  variant="outline"
+                  _hover={{ color: 'black' }}
+                  onClick={handleSubmit}
+                >
+                  Lähetä
+                </Button>
+              </ModalFooter>
+            </Flex>
+          )}
         </ModalContent>
       </Modal>
     </>
