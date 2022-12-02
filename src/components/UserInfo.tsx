@@ -1,4 +1,4 @@
-import { Button, Flex, Input, Text } from '@chakra-ui/react'
+import { Button, Flex, Input, Text, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
@@ -10,7 +10,7 @@ const UserInfo = ({ user }: Props) => {
   const { email, name: oldName } = user
   const [name, setName] = useState('')
 
-  console.log(user)
+  const toast = useToast()
 
   useEffect(() => {
     if (oldName) setName(oldName)
@@ -24,6 +24,13 @@ const UserInfo = ({ user }: Props) => {
     await axios.post('/api/updateUser', {
       email,
       name,
+    })
+    toast({
+      title: 'Tiedot päivitetty',
+      status: 'success',
+      isClosable: true,
+      duration: 5000,
+      position: 'top',
     })
   }
 
