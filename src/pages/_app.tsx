@@ -4,12 +4,15 @@ import { theme } from '../theme'
 
 import '@fontsource/comic-neue'
 import { SessionProvider } from 'next-auth/react'
+import Wrapper from '../components/Wrapper'
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <SessionProvider>
       <ChakraProvider theme={theme}>
-        <Component {...pageProps} />
+        <Wrapper>
+          <Component {...pageProps} />
+        </Wrapper>
       </ChakraProvider>
     </SessionProvider>
   )

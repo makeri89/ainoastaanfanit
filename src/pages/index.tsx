@@ -1,4 +1,4 @@
-import { Button, Flex, Grid, Heading, useDisclosure } from '@chakra-ui/react'
+import { Flex, Grid, useDisclosure } from '@chakra-ui/react'
 import EmailSubscribe from '../components/EmailSubscribe'
 import FileInput from '../components/FileInput'
 import Image from '../components/Image'
@@ -9,6 +9,7 @@ import { parseFromMongo } from '../lib/utils'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ImageModal from '../components/ImageModal'
+import LoginButton from '../components/LoginButton'
 
 interface Props {
   images: any
@@ -30,28 +31,15 @@ const App = ({ images }: Props) => {
     }
   }, [query.image, images, onOpen])
 
-  const handleLogin = () => {
-    router.push('/api/auth/signin')
-  }
-
   const handleImageChange = (image: any) => {
     setImage(image)
     onOpen()
   }
 
   return (
-    <Flex margin="0 10%" direction="column" align="center" gap="10px">
-      <Heading as="h1" fontSize="50px" mt="20px">
-        Ainoastaan faneille
-      </Heading>
+    <>
       <Flex gap="10px">
-        {status === 'authenticated' ? (
-          <FileInput />
-        ) : (
-          <Button variant="outline" onClick={handleLogin}>
-            Kirjaudu sisään
-          </Button>
-        )}
+        {status === 'authenticated' ? <FileInput /> : <LoginButton />}
         <EmailSubscribe />
       </Flex>
       <Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>
@@ -65,7 +53,7 @@ const App = ({ images }: Props) => {
         ))}
       </Grid>
       <ImageModal image={image} isOpen={isOpen} onClose={onClose} />
-    </Flex>
+    </>
   )
 }
 
