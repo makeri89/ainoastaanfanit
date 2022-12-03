@@ -18,14 +18,16 @@ import { useSession } from 'next-auth/react'
 import { useLikes } from '../lib/hooks'
 import { useSWRConfig } from 'swr'
 import { useEffect, useState } from 'react'
+import type { Image as ImageType, User } from '../lib/types'
 
 interface Props {
-  image: { id: string; src: string; name: string; user: string }
+  image: ImageType
   isOpen: boolean
   onClose: () => void
+  adder: User
 }
 
-const ImageModal = ({ image, isOpen, onClose }: Props) => {
+const ImageModal = ({ image, isOpen, onClose, adder }: Props) => {
   const { data: session, status } = useSession()
 
   const { likes, error } = useLikes(image.id)
@@ -61,13 +63,15 @@ const ImageModal = ({ image, isOpen, onClose }: Props) => {
           <Box margin="10px">
             <Image src={image?.src} alt="Tractor" />
           </Box>
-          <Flex m="10px">
+          <Flex m="10px" justify="space-between">
             {!!error ? (
               <Text>Tykkäyksiä ei voitu ladata</Text>
             ) : (
               <Text variant="dark">{likes?.length} tykkäystä</Text>
             )}
-            <Spacer />
+            {adder.name && (
+              <Text variant="dark">Kuvan lisäsi: {adder.name}</Text>
+            )}
             {status === 'authenticated' && (
               <>
                 {userHasLiked ? (

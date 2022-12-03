@@ -5,20 +5,22 @@ import Image from '../components/Image'
 import { useSession } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
 import clientPromise from '../lib/mongodb'
-import { parseFromMongo } from '../lib/utils'
+import { parseUsersFromMongo, parseImagesFromMongo } from '../lib/utils'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import ImageModal from '../components/ImageModal'
 import LoginButton from '../components/LoginButton'
+import type { Image as ImageType, User } from '../lib/types'
 
 interface Props {
-  images: any
+  images: ImageType[]
+  users: { [key: string]: User[] }
 }
 
-const App = ({ images }: Props) => {
+const App = ({ images, users }: Props) => {
   const { status } = useSession()
   const router = useRouter()
-  const [image, setImage] = useState(undefined)
+  const [image, setImage] = useState<ImageType>()
 
   const { query } = router
 
@@ -26,7 +28,7 @@ const App = ({ images }: Props) => {
 
   useEffect(() => {
     if (query.image) {
-      setImage(images.find((i: any) => i.id === query.image))
+      setImage(images.find((i: ImageType) => i.id === query.image))
       onOpen()
     }
   }, [query.image, images, onOpen])
@@ -48,7 +50,7 @@ const App = ({ images }: Props) => {
         <EmailSubscribe />
       </Flex>
       <Grid gap={2} templateColumns={{ lg: 'repeat(5, 1fr)', base: '1fr 1fr' }}>
-        {images.map((image: any) => (
+        {images.map((image: ImageType) => (
           // eslint-disable-next-line jsx-a11y/alt-text
           <Image
             key={image.name}
@@ -57,7 +59,14 @@ const App = ({ images }: Props) => {
           />
         ))}
       </Grid>
-      {image && <ImageModal image={image} isOpen={isOpen} onClose={onClose} />}
+      {image && (
+        <ImageModal
+          image={image}
+          adder={users[image.user][0]}
+          isOpen={isOpen}
+          onClose={onClose}
+        />
+      )}
     </>
   )
 }
@@ -68,9 +77,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const client = await clientPromise
   const db = client.db(process.env.MONGODB_DATABASE)
   const images = await db.collection('images').find().toArray()
+  const users = await db.collection('users').find().toArray()
   return {
     props: {
-      images: parseFromMongo(images),
+      images: parseImagesFromMongo(images),
+      users: parseUsersFromMongo(users),
     },
   }
 }
