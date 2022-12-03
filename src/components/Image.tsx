@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Box } from '@chakra-ui/react'
+import { Button } from '@chakra-ui/react'
 import { Blurhash } from 'react-blurhash'
 
 interface Props {
@@ -9,10 +9,11 @@ interface Props {
 
 const CustomImage = ({ image, handleClick }: Props) => {
   return (
-    <Box
+    <Button
       w={{ base: '160px', lg: '200px' }}
       h={{ base: '160px', lg: '200px' }}
       position="relative"
+      onClick={handleClick}
     >
       {image.hash && <Blurhash hash={image.hash} width="100%" height="100%" />}
       <Image
@@ -20,9 +21,8 @@ const CustomImage = ({ image, handleClick }: Props) => {
         src={image.src}
         fill
         style={{ objectFit: 'cover' }}
-        onClick={handleClick}
       />
-    </Box>
+    </Button>
   )
 }
 
