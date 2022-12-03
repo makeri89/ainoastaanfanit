@@ -9,7 +9,11 @@ interface Props {
 
 const CustomImage = ({ image, handleClick }: Props) => {
   return (
-    <Box w="200px" h="200px" position="relative">
+    <Box
+      w={{ base: '160px', lg: '200px' }}
+      h={{ base: '160px', lg: '200px' }}
+      position="relative"
+    >
       {image.hash && <Blurhash hash={image.hash} width="100%" height="100%" />}
       <Image
         alt="image of a tractor"
