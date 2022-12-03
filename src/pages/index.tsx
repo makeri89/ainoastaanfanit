@@ -57,7 +57,7 @@ const App = ({ images }: Props) => {
           />
         ))}
       </Grid>
-      <ImageModal image={image} isOpen={isOpen} onClose={onClose} />
+      {image && <ImageModal image={image} isOpen={isOpen} onClose={onClose} />}
     </>
   )
 }
