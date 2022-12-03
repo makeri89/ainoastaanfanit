@@ -16,6 +16,8 @@ import {
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import { useLikes } from '../lib/hooks'
+import { useSWRConfig } from 'swr'
+import { useEffect, useState } from 'react'
 
 interface Props {
   image: { id: string; src: string; name: string; user: string }
@@ -28,12 +30,23 @@ const ImageModal = ({ image, isOpen, onClose }: Props) => {
 
   const { likes, error } = useLikes(image.id)
 
-  const userHasLiked = likes?.find(
-    (like: any) => like.user === session?.user?.email
-  )
+  const { mutate } = useSWRConfig()
+
+  const [userHasLiked, setUserHasLiked] = useState(false)
+
+  useEffect(() => {
+    if (likes) {
+      setUserHasLiked(
+        likes.find((like: any) => like.user === session?.user?.email)
+      )
+    }
+  }, [likes, session?.user?.email])
 
   const handleLike = () => {
-    axios.post('/api/like', { image: image?.id, user: session?.user?.email })
+    axios.post('/api/like', { image: image.id, user: session?.user?.email })
+    mutate(`/api/getLikesByImage?image=${image.id}`)
+    setUserHasLiked(true)
+    likes.length++
   }
 
   return (
