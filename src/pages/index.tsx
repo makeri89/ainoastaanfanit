@@ -47,7 +47,7 @@ const App = ({ images }: Props) => {
         )}
         <EmailSubscribe />
       </Flex>
-      <Grid gap={2} templateColumns={{ lg: '1fr 1fr 1fr', base: '1fr 1fr' }}>
+      <Grid gap={2} templateColumns={{ lg: 'repeat(5, 1fr)', base: '1fr 1fr' }}>
         {images.map((image: any) => (
           // eslint-disable-next-line jsx-a11y/alt-text
           <Image
