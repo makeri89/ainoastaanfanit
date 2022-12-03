@@ -1,6 +1,6 @@
 import { Button, Flex, Grid, useDisclosure } from '@chakra-ui/react'
 import EmailSubscribe from '../components/EmailSubscribe'
-import FileInput from '../components/FileInput'
+import FileModal from '../components/FileModal'
 import Image from '../components/Image'
 import { useSession } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
@@ -39,7 +39,7 @@ const App = ({ images }: Props) => {
   return (
     <>
       <Flex gap="10px">
-        {status === 'authenticated' ? <FileInput /> : <LoginButton />}
+        {status === 'authenticated' ? <FileModal /> : <LoginButton />}
         {status === 'authenticated' && (
           <Button variant="outline" onClick={() => router.push('/profile')}>
             Profiili
