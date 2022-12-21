@@ -1,6 +1,7 @@
-import { Button, Flex, Input, Text, useToast } from '@chakra-ui/react'
+import { Flex, Input, Text, useToast } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import Button from './atoms/Button'
 
 interface Props {
   user?: any
@@ -48,9 +49,7 @@ const UserInfo = ({ user }: Props) => {
         bg="white"
         color="black"
       />
-      <Button variant="outline" onClick={handleSubmit}>
-        Tallenna
-      </Button>
+      <Button onClick={handleSubmit}>Tallenna</Button>
     </Flex>
   )
 }

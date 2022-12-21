@@ -8,7 +8,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'ainoastaanfanit.s3.eu-north-1.amazonaws.com',
-        port: '',
       },
     ],
   },

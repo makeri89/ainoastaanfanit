@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   Input,
   Modal,
@@ -13,6 +12,7 @@ import {
 } from '@chakra-ui/react'
 import { useState } from 'react'
 import axios from 'axios'
+import Button from './atoms/Button'
 
 const FileInput = () => {
   const [email, setEmail] = useState('')
@@ -39,9 +39,7 @@ const FileInput = () => {
 
   return (
     <>
-      <Button variant="outline" _hover={{ color: 'black' }} onClick={onOpen}>
-        Tilaa
-      </Button>
+      <Button onClick={onOpen}>Tilaa</Button>
       <Modal isOpen={isOpen} onClose={handleClose}>
         <ModalOverlay />
         <ModalContent bg="primary">
@@ -49,9 +47,7 @@ const FileInput = () => {
             <div>
               <ModalHeader color="white">Kiitos tilauksesta!</ModalHeader>
               <ModalFooter>
-                <Button variant="outline" onClick={handleClose}>
-                  Sulje
-                </Button>
+                <Button onClick={handleClose}>Sulje</Button>
               </ModalFooter>
             </div>
           ) : (
@@ -68,13 +64,7 @@ const FileInput = () => {
                 />
               </ModalBody>
               <ModalFooter>
-                <Button
-                  variant="outline"
-                  _hover={{ color: 'black' }}
-                  onClick={handleSubmit}
-                >
-                  Vahvista
-                </Button>
+                <Button onClick={handleSubmit}>Vahvista</Button>
               </ModalFooter>
             </Flex>
           )}
