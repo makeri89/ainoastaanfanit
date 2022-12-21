@@ -1,5 +1,4 @@
 import {
-  Button,
   Flex,
   Input,
   Modal,
@@ -15,6 +14,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import BlurhashImageEncoder from './BlurHashImageEncoder'
+import Button from './atoms/Button'
 
 const FileModal = () => {
   const [desc, setDesc] = useState('')
@@ -33,7 +33,6 @@ const FileModal = () => {
 
   const handleSubmit = async () => {
     if (!data) return
-    console.log(encodedHash, data)
     const { data: s3Data } = await axios.post('/api/uploadFile', {
       name: data.file.name,
       type: data.file.type,
@@ -60,9 +59,7 @@ const FileModal = () => {
 
   return (
     <>
-      <Button variant="outline" _hover={{ color: 'black' }} onClick={onOpen}>
-        Lisää kuva
-      </Button>
+      <Button onClick={onOpen}>Lisää kuva</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="primary">
@@ -84,13 +81,7 @@ const FileModal = () => {
               />
             </ModalBody>
             <ModalFooter>
-              <Button
-                variant="outline"
-                _hover={{ color: 'black' }}
-                onClick={handleSubmit}
-              >
-                Lähetä
-              </Button>
+              <Button onClick={handleSubmit}>Lähetä</Button>
             </ModalFooter>
           </Flex>
         </ModalContent>

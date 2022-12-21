@@ -1,18 +1,8 @@
-import { Box, Button, Heading, Text } from '@chakra-ui/react'
-import { useRouter } from 'next/router'
+import { Box, Heading, Text } from '@chakra-ui/react'
 
 const ContentPolicy = () => {
-  const router = useRouter()
-
-  const handleFrontPage = () => {
-    router.push('/')
-  }
-
   return (
     <Box maxW="900px">
-      <Button variant="outline" onClick={handleFrontPage}>
-        Etusivu
-      </Button>
       <Heading my="20px">Sisällön säännöt</Heading>
       <Heading as="h3" fontSize="1.5rem">
         Sisältö

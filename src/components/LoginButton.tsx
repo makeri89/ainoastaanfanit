@@ -1,5 +1,5 @@
-import { Button } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
+import Button from '@ui/atoms/Button'
 
 const LoginButton = () => {
   const router = useRouter()
@@ -8,11 +8,7 @@ const LoginButton = () => {
     router.push('/api/auth/signin')
   }
 
-  return (
-    <Button variant="outline" onClick={handleLogin}>
-      Kirjaudu sisään
-    </Button>
-  )
+  return <Button onClick={handleLogin}>Kirjaudu sisään</Button>
 }
 
 export default LoginButton
