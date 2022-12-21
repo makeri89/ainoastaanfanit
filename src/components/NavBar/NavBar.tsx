@@ -36,13 +36,6 @@ const NavBar = () => {
             <FileModal />
           </NavigationMenuItem>
         )}
-        {status == 'authenticated' && (
-          <NavigationMenuItem>
-            <NavigationMenuLink href="/api/auth/signout">
-              Kirjaudu ulos
-            </NavigationMenuLink>
-          </NavigationMenuItem>
-        )}
       </NavigationMenuList>
     </NavigationMenuRoot>
   )

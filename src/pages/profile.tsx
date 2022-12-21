@@ -2,6 +2,8 @@ import { Heading } from '@chakra-ui/react'
 import { useSession } from 'next-auth/react'
 import LoginButton from '../components/LoginButton'
 import UserInfo from '../components/UserInfo'
+import { signOut } from 'next-auth/react'
+import Button from '@ui/atoms/Button'
 
 const Profile = () => {
   const { data: session, status } = useSession()
@@ -12,6 +14,7 @@ const Profile = () => {
       {status === 'authenticated' ? (
         <>
           <UserInfo user={session?.user} />
+          <Button onClick={() => signOut()}>Kirjaudu ulos</Button>
         </>
       ) : (
         <>

@@ -11,6 +11,7 @@ const Button = styled('button', {
   padding: '0.25rem 0.5rem',
   '&:focus': { boxShadow: '0 0 0 2px #C92B2B' },
   '&:hover': { backgroundColor: '$fanRed', cursor: 'pointer' },
+  textAlign: 'center',
 })
 
 export default Button
