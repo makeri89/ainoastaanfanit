@@ -1,9 +1,9 @@
+import NavigationLink from '@ui/atoms/NavigationLink'
 import EmailSubscribe from '@ui/EmailSubscribe'
 import FileModal from '@ui/FileModal'
 import { useSession } from 'next-auth/react'
 import {
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuRoot,
 } from './components'
@@ -15,17 +15,17 @@ const NavBar = () => {
     <NavigationMenuRoot>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuLink href="/">Etusivu</NavigationMenuLink>
+          <NavigationLink href="/">Etusivu</NavigationLink>
         </NavigationMenuItem>
         {status === 'authenticated' ? (
           <NavigationMenuItem>
-            <NavigationMenuLink href="/profile">Profiili</NavigationMenuLink>
+            <NavigationLink href="/profile">Profiili</NavigationLink>
           </NavigationMenuItem>
         ) : (
           <NavigationMenuItem>
-            <NavigationMenuLink href="/api/auth/signin">
+            <NavigationLink href="/api/auth/signin">
               Kirjaudu sisään
-            </NavigationMenuLink>
+            </NavigationLink>
           </NavigationMenuItem>
         )}
         <NavigationMenuItem>
