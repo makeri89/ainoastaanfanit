@@ -1,6 +1,6 @@
-import { Heading } from '@chakra-ui/react'
 import NavBar from '@ui/NavBar'
 import Flex from './atoms/Flex'
+import { H1 } from './atoms/Heading'
 
 interface Props {
   children: React.ReactNode
@@ -16,9 +16,7 @@ const Wrapper = ({ children }: Props) => {
         gap: 10,
       }}
     >
-      <Heading as="h1" fontSize="50px" mt="20px">
-        Ainoastaan faneille
-      </Heading>
+      <H1 css={{ marginTop: 20, fontWeight: 'bold' }}>Ainoastaan faneille</H1>
       <NavBar />
       {children}
     </Flex>

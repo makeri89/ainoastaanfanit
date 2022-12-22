@@ -1,24 +1,22 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import Box from '@ui/atoms/Box'
+import { H2, H3 } from '@ui/atoms/Heading'
+import Text from '@ui/atoms/Text'
 
 const ContentPolicy = () => {
   return (
-    <Box maxW="900px">
-      <Heading my="20px">Sisällön säännöt</Heading>
-      <Heading as="h3" fontSize="1.5rem">
-        Sisältö
-      </Heading>
-      <Text fontSize="1.2rem">
+    <Box css={{ maxWidth: 900 }}>
+      <H2 css={{ margin: '0 20px' }}>Sisällön säännöt</H2>
+      <H3>Sisältö</H3>
+      <Text css={{ fontSize: '1.2rem' }}>
         Tämä sivusto on tarkoitettu kuville traktoreista ja muista
         maatalouskoneista.
       </Text>
-      <Heading as="h3" fontSize="1.5rem" mt="10px">
-        Sisällön lisääminen
-      </Heading>
-      <Text fontSize="1.2rem">
+      <H3 css={{ marginTop: 10 }}>Sisällön lisääminen</H3>
+      <Text css={{ fontSize: '1.2rem' }}>
         Sivustolle voi lähettää sisältöä, joka on laillista ja joka ei riko
         tekijänoikeuksia.
       </Text>
-      <Text fontSize="1.2rem">
+      <Text css={{ fontSize: '1.2rem' }}>
         Sisältöä voi lisätä ainoastaan kirjautuneena. Jos olet asettanut
         itsellesi nimimerkin, se näkyy lisätyn kuvan yhteydessä.
       </Text>

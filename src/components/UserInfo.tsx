@@ -1,9 +1,10 @@
-import { Input, Text } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Button from './atoms/Button'
-import Flex from './atoms/Flex'
-import Toast from './atoms/Toast'
+import Button from '@ui/atoms/Button'
+import Flex from '@ui/atoms/Flex'
+import Toast from '@ui/atoms/Toast'
+import Text from '@ui/atoms/Text'
 
 interface Props {
   user?: any
