@@ -18,17 +18,7 @@ export const theme = extendTheme({
   },
   components: {
     Button: {
-      baseStyle: {
-        fontWeight: 'bold',
-      },
       variants: {
-        outline: {
-          border: '2px',
-          _hover: {
-            bg: 'primary',
-            color: 'black',
-          },
-        },
         green: {
           bg: 'primary',
           _hover: {
@@ -37,19 +27,6 @@ export const theme = extendTheme({
             border: '2px',
             borderColor: 'primary',
           },
-        },
-        disabled: {
-          bg: 'white',
-          color: 'primary',
-          borderColor: 'primary',
-          border: '2px',
-        },
-      },
-    },
-    Text: {
-      variants: {
-        dark: {
-          color: 'black',
         },
       },
     },

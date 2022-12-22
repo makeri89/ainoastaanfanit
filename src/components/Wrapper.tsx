@@ -1,6 +1,6 @@
 import NavBar from '@ui/NavBar'
-import Flex from './atoms/Flex'
-import { H1 } from './atoms/Heading'
+import Flex from '@ui/atoms/Flex'
+import { H1 } from '@ui/atoms/Heading'
 
 interface Props {
   children: React.ReactNode

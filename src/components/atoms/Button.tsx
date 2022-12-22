@@ -12,6 +12,12 @@ const Button = styled('button', {
   '&:focus': { boxShadow: '0 0 0 2px #C92B2B' },
   '&:hover': { backgroundColor: '$fanRed', cursor: 'pointer' },
   textAlign: 'center',
+  '&:disabled': {
+    backgroundColor: 'white',
+    color: '$fanGreen',
+    borderColor: '$fanGreen',
+    cursor: 'not-allowed',
+  },
 })
 
 export default Button

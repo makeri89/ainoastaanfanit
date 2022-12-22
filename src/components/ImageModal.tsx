@@ -5,8 +5,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalCloseButton,
-  Image,
-  Button,
 } from '@chakra-ui/react'
 import axios from 'axios'
 import { useSession } from 'next-auth/react'
@@ -18,6 +16,8 @@ import Flex from '@ui/atoms/Flex'
 import Box from '@ui/atoms/Box'
 import { H2 } from '@ui/atoms/Heading'
 import Text from '@ui/atoms/Text'
+import Image from 'next/image'
+import Button from '@ui/atoms/Button'
 
 interface Props {
   image: ImageType
@@ -72,13 +72,11 @@ const ImageModal = ({ image, isOpen, onClose, adder }: Props) => {
             {status === 'authenticated' && (
               <>
                 {userHasLiked ? (
-                  <Button variant="disabled" onClick={handleLike} disabled>
+                  <Button onClick={handleLike} disabled>
                     Tykkäsit jo
                   </Button>
                 ) : (
-                  <Button variant="green" onClick={handleLike}>
-                    Tykkää
-                  </Button>
+                  <Button onClick={handleLike}>Tykkää</Button>
                 )}
               </>
             )}
