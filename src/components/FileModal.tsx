@@ -1,5 +1,4 @@
 import {
-  Flex,
   Input,
   Modal,
   ModalOverlay,
@@ -15,6 +14,7 @@ import axios from 'axios'
 import { useSession } from 'next-auth/react'
 import BlurhashImageEncoder from './BlurHashImageEncoder'
 import Button from './atoms/Button'
+import Flex from './atoms/Flex'
 
 const FileModal = () => {
   const [desc, setDesc] = useState('')
@@ -63,7 +63,7 @@ const FileModal = () => {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent bg="primary">
-          <Flex direction="column" gap="6px">
+          <Flex css={{ flexDirection: 'column', gap: 6 }}>
             <ModalHeader>Lisää kuva</ModalHeader>
             <ModalCloseButton />
             <ModalBody>

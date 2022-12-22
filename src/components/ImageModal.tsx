@@ -9,8 +9,6 @@ import {
   Image,
   Heading,
   Button,
-  Flex,
-  Spacer,
   Text,
 } from '@chakra-ui/react'
 import axios from 'axios'
@@ -19,6 +17,7 @@ import { useLikes } from '../lib/hooks'
 import { useSWRConfig } from 'swr'
 import { useEffect, useState } from 'react'
 import type { Image as ImageType, User } from '../lib/types'
+import Flex from './atoms/Flex'
 
 interface Props {
   image: ImageType
@@ -63,7 +62,7 @@ const ImageModal = ({ image, isOpen, onClose, adder }: Props) => {
           <Box margin="10px">
             <Image src={image?.src} alt="Tractor" />
           </Box>
-          <Flex m="10px" justify="space-between">
+          <Flex css={{ margin: 10, justifyContent: 'space-between' }}>
             {!!error ? (
               <Text>Tykkäyksiä ei voitu ladata</Text>
             ) : (

@@ -1,5 +1,6 @@
-import { Flex, Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react'
 import NavBar from '@ui/NavBar'
+import Flex from './atoms/Flex'
 
 interface Props {
   children: React.ReactNode
@@ -7,7 +8,14 @@ interface Props {
 
 const Wrapper = ({ children }: Props) => {
   return (
-    <Flex margin="0 10%" direction="column" align="center" gap="10px">
+    <Flex
+      css={{
+        margin: 10,
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: 10,
+      }}
+    >
       <Heading as="h1" fontSize="50px" mt="20px">
         Ainoastaan faneille
       </Heading>

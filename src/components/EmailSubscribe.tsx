@@ -1,5 +1,4 @@
 import {
-  Flex,
   Input,
   Modal,
   ModalOverlay,
@@ -13,6 +12,7 @@ import {
 import { useState } from 'react'
 import axios from 'axios'
 import Button from './atoms/Button'
+import Flex from './atoms/Flex'
 
 const FileInput = () => {
   const [email, setEmail] = useState('')
@@ -51,7 +51,7 @@ const FileInput = () => {
               </ModalFooter>
             </div>
           ) : (
-            <Flex direction="column" gap="6px">
+            <Flex css={{ flexDirection: 'column', gap: 6 }}>
               <ModalHeader>Tilaa päivittäinen kuva sähköpostiisi</ModalHeader>
               <ModalCloseButton />
               <ModalBody>
