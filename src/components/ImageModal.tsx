@@ -1,4 +1,5 @@
 import {
+  Image,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -16,7 +17,6 @@ import Flex from '@ui/atoms/Flex'
 import Box from '@ui/atoms/Box'
 import { H2 } from '@ui/atoms/Heading'
 import Text from '@ui/atoms/Text'
-import Image from 'next/image'
 import Button from '@ui/atoms/Button'
 
 interface Props {
