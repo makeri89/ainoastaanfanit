@@ -1,10 +1,10 @@
-import { Input } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Button from '@ui/atoms/Button'
 import Flex from '@ui/atoms/Flex'
 import Toast from '@ui/atoms/Toast'
 import Text from '@ui/atoms/Text'
+import Input from './atoms/Input'
 
 interface Props {
   user?: any
@@ -42,8 +42,6 @@ const UserInfo = ({ user }: Props) => {
         placeholder="Tunnus"
         onChange={handleChange}
         value={name}
-        bg="white"
-        color="black"
       />
       <Button onClick={handleSubmit}>Tallenna</Button>
       <Toast

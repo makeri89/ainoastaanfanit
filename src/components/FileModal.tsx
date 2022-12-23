@@ -1,5 +1,4 @@
 import {
-  Input,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -15,6 +14,7 @@ import { useSession } from 'next-auth/react'
 import BlurhashImageEncoder from './BlurHashImageEncoder'
 import Button from './atoms/Button'
 import Flex from './atoms/Flex'
+import Input from './atoms/Input'
 
 const FileModal = () => {
   const [desc, setDesc] = useState('')
