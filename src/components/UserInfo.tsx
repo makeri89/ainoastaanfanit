@@ -1,7 +1,10 @@
-import { Flex, Input, Text, useToast } from '@chakra-ui/react'
+import { Input } from '@chakra-ui/react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import Button from './atoms/Button'
+import Button from '@ui/atoms/Button'
+import Flex from '@ui/atoms/Flex'
+import Toast from '@ui/atoms/Toast'
+import Text from '@ui/atoms/Text'
 
 interface Props {
   user?: any
@@ -10,8 +13,7 @@ interface Props {
 const UserInfo = ({ user }: Props) => {
   const { email, name: oldName } = user
   const [name, setName] = useState('')
-
-  const toast = useToast()
+  const [toastOpen, setToastOpen] = useState(false)
 
   useEffect(() => {
     if (oldName) setName(oldName)
@@ -26,17 +28,11 @@ const UserInfo = ({ user }: Props) => {
       email,
       name,
     })
-    toast({
-      title: 'Tiedot päivitetty',
-      status: 'success',
-      isClosable: true,
-      duration: 5000,
-      position: 'top',
-    })
+    setToastOpen(true)
   }
 
   return (
-    <Flex direction="column" gap="10px">
+    <Flex css={{ flexDirection: 'column', gap: 10 }}>
       <Text>Sähköposti: {email}</Text>
       <label htmlFor="name">
         <Text>Vaihda käyttäjätunnus:</Text>
@@ -50,6 +46,12 @@ const UserInfo = ({ user }: Props) => {
         color="black"
       />
       <Button onClick={handleSubmit}>Tallenna</Button>
+      <Toast
+        isOpen={toastOpen}
+        onOpenChange={setToastOpen}
+        title="Tiedot päivitetty"
+        message="Tiedot päivitetty onnistuneesti"
+      />
     </Flex>
   )
 }
