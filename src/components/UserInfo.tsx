@@ -4,7 +4,7 @@ import Button from '@ui/atoms/Button'
 import Flex from '@ui/atoms/Flex'
 import Toast from '@ui/atoms/Toast'
 import Text from '@ui/atoms/Text'
-import Input from './atoms/Input'
+import Input from '@ui/atoms/Input'
 
 interface Props {
   user?: any
@@ -32,7 +32,7 @@ const UserInfo = ({ user }: Props) => {
   }
 
   return (
-    <Flex css={{ flexDirection: 'column', gap: 10 }}>
+    <Flex css={{ flexDirection: 'column', gap: 10, alignItems: 'center' }}>
       <Text>Sähköposti: {email}</Text>
       <label htmlFor="name">
         <Text>Vaihda käyttäjätunnus:</Text>
