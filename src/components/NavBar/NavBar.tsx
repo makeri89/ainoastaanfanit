@@ -28,9 +28,6 @@ const NavBar = () => {
             </NavigationLink>
           </NavigationMenuItem>
         )}
-        <NavigationMenuItem>
-          <EmailSubscribe />
-        </NavigationMenuItem>
         {status == 'authenticated' && (
           <NavigationMenuItem>
             <FileModal />
