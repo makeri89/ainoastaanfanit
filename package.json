@@ -20,7 +20,7 @@
     "@radix-ui/react-navigation-menu": "^1.1.1",
     "@radix-ui/react-toast": "^1.1.2",
     "@stitches/react": "^1.2.8",
-    "@types/node": "18.11.9",
+    "@types/node": "18.19.113",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "@vercel/analytics": "^0.1.5",
